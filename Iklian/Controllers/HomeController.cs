@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Iklian.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Iklian.Models;
 
-namespace Iklian.Controllers
+namespace Iklian.Web.Controllers
 {
     public class HomeController : Controller
     {

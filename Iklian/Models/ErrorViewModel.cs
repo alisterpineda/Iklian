@@ -1,6 +1,4 @@
-using System;
-
-namespace Iklian.Models
+namespace Iklian.Web.Models
 {
     public class ErrorViewModel
     {
