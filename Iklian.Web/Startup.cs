@@ -1,8 +1,12 @@
+using System.Runtime.Serialization;
+using Iklian.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Npgsql;
 
 namespace Iklian.Web
 {
@@ -15,14 +19,37 @@ namespace Iklian.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public void ConfigureDevelopmentServices(IServiceCollection services)
         {
+            ConfigureCommonServices(services);
+        }
+
+        public void ConfigureProductionServices(IServiceCollection services)
+        {
+            ConfigureCommonServices(services);
+        }
+
+        private void ConfigureCommonServices(IServiceCollection services)
+        {
+            services.AddDbContextPool<IklianDbContext>(options =>
+            {
+                var builder = new NpgsqlConnectionStringBuilder
+                {
+                    Host = Configuration["DatabaseConfiguration:Host"],
+                    Database = Configuration["DatabaseConfiguration:Database"],
+                    Username = Configuration["DatabaseConfiguration:Username"], 
+                    Password = Configuration["DatabaseConfiguration:Password"]
+                };
+                options.UseNpgsql(builder.ConnectionString);
+            });
+
+            services.AddScoped<IShortUrlData, ShortUrlData>();
+
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IklianDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -45,8 +72,10 @@ namespace Iklian.Web
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
+
+            dbContext.Database.Migrate();
         }
     }
 }

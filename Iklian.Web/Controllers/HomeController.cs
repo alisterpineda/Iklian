@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Iklian.Data;
 using Iklian.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,11 +16,6 @@ namespace Iklian.Web.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
