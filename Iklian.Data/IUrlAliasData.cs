@@ -5,9 +5,9 @@ using Iklian.Core;
 
 namespace Iklian.Data
 {
-    public interface IShortUrlData
+    public interface IUrlAliasData
     {
-        ShortUrl Add(ShortUrl shortUrl);
+        UrlAlias Add(UrlAlias urlAlias);
         int Commit();
     }
 }

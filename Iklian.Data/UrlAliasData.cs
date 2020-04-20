@@ -5,19 +5,19 @@ using Iklian.Core;
 
 namespace Iklian.Data
 {
-    public class ShortUrlData : IShortUrlData
+    public class UrlAliasData : IUrlAliasData
     {
         private readonly IklianDbContext _db;
 
-        public ShortUrlData(IklianDbContext dbContext)
+        public UrlAliasData(IklianDbContext dbContext)
         {
             _db = dbContext;
         }
 
-        public ShortUrl Add(ShortUrl shortUrl)
+        public UrlAlias Add(UrlAlias urlAlias)
         {
-            _db.ShortUrls.Add(shortUrl);
-            return shortUrl;
+            _db.ShortUrls.Add(urlAlias);
+            return urlAlias;
         }
 
         public int Commit()

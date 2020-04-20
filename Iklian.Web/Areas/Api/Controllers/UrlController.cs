@@ -13,13 +13,13 @@ namespace Iklian.Web.Areas.Api.Controllers
     public class UrlController : ControllerBase
     {
         private readonly ILogger<UrlController> _logger;
-        private readonly IShortUrlData _shortUrlData;
+        private readonly IUrlAliasData _urlAliasData;
         private readonly Random _random = new Random();
 
-        public UrlController(ILogger<UrlController> logger, IShortUrlData shortUrlData)
+        public UrlController(ILogger<UrlController> logger, IUrlAliasData urlAliasData)
         {
             _logger = logger;
-            _shortUrlData = shortUrlData;
+            _urlAliasData = urlAliasData;
         }
 
         [HttpPost]
@@ -28,15 +28,15 @@ namespace Iklian.Web.Areas.Api.Controllers
             var creationDate = DateTime.Now;
             var hash = GenerateRandomString(4);
 
-            var shortUrl = new ShortUrl
+            var shortUrl = new UrlAlias
             {
                 Url = request.Url,
-                Hash = hash,
+                Alias = hash,
                 CreationDate = creationDate
             };
 
-            _shortUrlData.Add(shortUrl);
-            _shortUrlData.Commit();
+            _urlAliasData.Add(shortUrl);
+            _urlAliasData.Commit();
 
             return new JsonResult(new UrlGenerateResponse {Hash = hash});
         }

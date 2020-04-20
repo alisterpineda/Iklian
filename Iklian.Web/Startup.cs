@@ -43,7 +43,7 @@ namespace Iklian.Web
                 options.UseNpgsql(builder.ConnectionString);
             });
 
-            services.AddScoped<IShortUrlData, ShortUrlData>();
+            services.AddScoped<IUrlAliasData, UrlAliasData>();
 
             services.AddControllersWithViews();
         }

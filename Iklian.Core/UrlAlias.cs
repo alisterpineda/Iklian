@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Iklian.Core
 {
-    public class ShortUrl
+    public class UrlAlias
     {
         [Key]
         [StringLength(255)]
-        public string Hash { get; set; }
+        public string Alias { get; set; }
 
         [Url]
         [StringLength(1000)]
