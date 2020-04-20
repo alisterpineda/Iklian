@@ -11,6 +11,6 @@ namespace Iklian.Data
 
         }
 
-        public DbSet<UrlAlias> ShortUrls { get; set; }
+        public DbSet<UrlAlias> UrlAliases { get; set; }
     }
 }

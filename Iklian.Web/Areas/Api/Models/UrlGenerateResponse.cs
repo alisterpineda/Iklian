@@ -7,6 +7,6 @@ namespace Iklian.Web.Areas.Api.Models
 {
     public class UrlGenerateResponse
     {
-        public string Hash { get; set; }
+        public string Alias { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Iklian.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Iklian.Data
 {
@@ -16,7 +17,14 @@ namespace Iklian.Data
 
         public UrlAlias Add(UrlAlias urlAlias)
         {
-            _db.ShortUrls.Add(urlAlias);
+            _db.UrlAliases.Add(urlAlias);
+            return urlAlias;
+        }
+
+        public UrlAlias Update(UrlAlias urlAlias)
+        {
+            var entity = _db.UrlAliases.Attach(urlAlias);
+            entity.State = EntityState.Modified;
             return urlAlias;
         }
 

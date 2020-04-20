@@ -8,6 +8,7 @@ namespace Iklian.Data
     public interface IUrlAliasData
     {
         UrlAlias Add(UrlAlias urlAlias);
+        UrlAlias Update(UrlAlias urlAlias);
         int Commit();
     }
 }
