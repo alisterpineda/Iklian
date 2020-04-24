@@ -24,11 +24,6 @@ namespace Iklian.Web.Areas.Api.Controllers
         [HttpPost]
         public IActionResult Generate([FromBody] UrlGenerateRequest request)
         {
-            if (!TryValidateModel(request))
-            {
-                return UnprocessableEntity();
-            }
-
             var urlAlias = new UrlAlias();
             _urlAliasData.Add(urlAlias);
             _urlAliasData.Commit();

@@ -2,28 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 
+<script src="js/home.js"></script>
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Long URL" id="url-text-input">
         <div class="input-group-append">
-            <button class="btn btn-outline-primary" type="button" id="shorten-button">Shorten</button>
+            <button class="btn btn-outline-primary" type="button" id="shorten-button" onclick="submitShortenUrl();">Shorten</button>
         </div>
     </div>
 </div>
-
-<!--
-<script>
-    $('#shorten-button').on('click',
-        function (event) {
-            $.ajax({
-                type: "GET",
-                data: {
-                    url: ""
-                },
-                url: "/api/url/generate"
-            });
-        });
-</script>
--->

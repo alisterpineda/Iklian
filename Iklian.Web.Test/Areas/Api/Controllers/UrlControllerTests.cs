@@ -34,7 +34,7 @@ namespace Iklian.Web.Test.Areas.Api.Controllers
         [Test]
         public void Generate_WithValidRequest_ReturnsWithJsonResult()
         {
-            _subject = new UrlController(NullLogger<UrlController>.Instance, _urlAliasDataMoq.Object){ ObjectValidator = _objectModelValidatorMock.Object};
+            _subject = new UrlController(NullLogger<UrlController>.Instance, _urlAliasDataMoq.Object);
             var response = _subject.Generate(new UrlGenerateRequest {Url = ValidUrl});
 
             var jsonResult = response as JsonResult;
@@ -42,18 +42,6 @@ namespace Iklian.Web.Test.Areas.Api.Controllers
             var urlGenerateResponse = jsonResult.Value as UrlGenerateResponse;
             Assert.IsNotNull(urlGenerateResponse);
             Assert.IsNotNull(urlGenerateResponse.Alias);
-        }
-
-        [Test]
-        public void Generate_WithInvalidRequest_ReturnsWithUnprocessableEntityErrorCode()
-        {
-            _subject = new UrlController(NullLogger<UrlController>.Instance, _urlAliasDataMoq.Object) { ObjectValidator = _objectModelValidatorMock.Object};
-            _subject.ModelState.AddModelError("Url", "The Url is not a valid URL"); // force validation to fail
-
-            var response = _subject.Generate(new UrlGenerateRequest { Url = InvalidUrl });
-
-            var jsonResult = response as UnprocessableEntityResult;
-            Assert.IsNotNull(jsonResult);
         }
     }
 }
