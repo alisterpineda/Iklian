@@ -2,7 +2,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<script src="js/home.js"></script>
+<script src="js/home.js" asp-append-version="true"></script>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -13,4 +13,7 @@
             <button class="btn btn-outline-primary" type="button" id="shorten-button" onclick="submitShortenUrl();">Shorten</button>
         </div>
     </div>
+
+    <div class="alert alert-success" role="alert" style="display:none;"  id="success-message"></div>
+    <div class="alert alert-danger" role="alert" style="display:none;" id="error-message"></div>
 </div>

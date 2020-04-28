@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='cssmin, uglify, copy' Clean='clean' />
+/// <binding BeforeBuild='clean' AfterBuild='copy, uglify, cssmin' />
 module.exports = function (grunt) {
     grunt.initConfig({
         clean: ["wwwroot/css/*", "wwwroot/js/*", "temp/"],
