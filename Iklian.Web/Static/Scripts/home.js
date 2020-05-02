@@ -15,7 +15,7 @@
             'Accept': 'application/json'
         },
         success: function (response) {
-            var generated_link = location.protocol + '//' + window.location.origin + '/' + response.alias;
+            var generated_link = window.location.origin + '/' + response.alias;
             success_message.html(generated_link);
             success_message.show();
 
