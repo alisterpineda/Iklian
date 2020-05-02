@@ -14,8 +14,9 @@
             "Content-Type": "application/json",
             'Accept': 'application/json'
         },
-        success: function(response) {
-            success_message.html(response.alias);
+        success: function (response) {
+            var generated_link = location.protocol + '//' + window.location.origin + '/' + response.alias;
+            success_message.html(generated_link);
             success_message.show();
 
         },
