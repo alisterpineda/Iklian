@@ -2,7 +2,7 @@
 
 namespace Iklian.Web.Areas.Api.Models
 {
-    public class UrlGenerateRequest
+    public class GenerateAliasRequest
     {
         [Required]
         [Url]

@@ -8,24 +8,24 @@ using Microsoft.Extensions.Logging;
 
 namespace Iklian.Web.Areas.Api.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("[controller]/[action]")]
     [ApiController]
-    public class UrlController : ControllerBase
+    public class ApiController : ControllerBase
     {
-        private readonly ILogger<UrlController> _logger;
+        private readonly ILogger<ApiController> _logger;
         private readonly IUrlAliasData _urlAliasData;
 
-        public UrlController(ILogger<UrlController> logger, IUrlAliasData urlAliasData)
+        public ApiController(ILogger<ApiController> logger, IUrlAliasData urlAliasData)
         {
             _logger = logger;
             _urlAliasData = urlAliasData;
         }
 
         [HttpPost]
-        public IActionResult Generate([FromBody] UrlGenerateRequest request)
+        public IActionResult GenerateAlias([FromBody] GenerateAliasRequest request)
         {
             var urlAlias = new UrlAlias();
-            _urlAliasData.Add(urlAlias);
+            _urlAliasData.Create(urlAlias);
             _urlAliasData.Commit();
 
             urlAlias.Url = request.Url;
@@ -34,7 +34,18 @@ namespace Iklian.Web.Areas.Api.Controllers
             _urlAliasData.Update(urlAlias);
             _urlAliasData.Commit();
 
-            return new JsonResult(new UrlGenerateResponse {Alias = urlAlias.Alias});
+            return new JsonResult(new GenerateAliasResponse {Alias = urlAlias.Alias});
+        }
+
+        [HttpGet]
+        public IActionResult GetUrl([FromQuery] string alias)
+        {
+            var urlAlias = _urlAliasData.GetUrlAliasFromAlias(alias);
+            if (urlAlias == null)
+            {
+                return new JsonResult(new ErrorResponse($"Could not find the associated URL that matches alias: {alias}"));
+            }
+            return new JsonResult(new GetUrlResponse{ Url = urlAlias.Url });
         }
 
         private string EncodeInt32AsString(int input, int maxLength = 0)

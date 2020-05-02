@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Iklian.Web.Areas.Api.Models
 {
-    public class UrlGenerateResponse
+    public class GenerateAliasResponse : OperationResponse
     {
         public string Alias { get; set; }
     }

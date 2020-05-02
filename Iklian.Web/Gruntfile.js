@@ -6,7 +6,8 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     "wwwroot/css/site.min.css":
-                        [ "node_modules/bootstrap/dist/css/*.css" ]
+                        ["node_modules/bootstrap/dist/css/*.css",
+                            "Static/Css/*.css"]
                 }
             }
         },

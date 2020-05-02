@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Iklian.Core;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +16,15 @@ namespace Iklian.Data
             _db = dbContext;
         }
 
-        public UrlAlias Add(UrlAlias urlAlias)
+        public UrlAlias Create(UrlAlias urlAlias)
         {
             _db.UrlAliases.Add(urlAlias);
             return urlAlias;
+        }
+
+        public UrlAlias GetUrlAliasFromAlias(string alias)
+        {
+            return _db.UrlAliases.FirstOrDefault(x => x.Alias == alias);
         }
 
         public UrlAlias Update(UrlAlias urlAlias)

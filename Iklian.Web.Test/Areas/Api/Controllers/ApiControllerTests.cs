@@ -10,14 +10,13 @@ using NUnit.Framework;
 
 namespace Iklian.Web.Test.Areas.Api.Controllers
 {
-    public class UrlControllerTests
+    public class ApiControllerTests
     {
         private const string ValidUrl = "https://www.canada.ca";
-        private const string InvalidUrl = "abc";
         private readonly Mock<IUrlAliasData> _urlAliasDataMoq = new Mock<IUrlAliasData>();
         private readonly Mock<IObjectModelValidator> _objectModelValidatorMock = new Mock<IObjectModelValidator>();
 
-        private UrlController _subject;
+        private ApiController _subject;
 
         
         [SetUp]
@@ -32,14 +31,14 @@ namespace Iklian.Web.Test.Areas.Api.Controllers
         }
 
         [Test]
-        public void Generate_WithValidRequest_ReturnsWithJsonResult()
+        public void GenerateAlias_WithValidRequest_ReturnsWithJsonResult()
         {
-            _subject = new UrlController(NullLogger<UrlController>.Instance, _urlAliasDataMoq.Object);
-            var response = _subject.Generate(new UrlGenerateRequest {Url = ValidUrl});
+            _subject = new ApiController(NullLogger<ApiController>.Instance, _urlAliasDataMoq.Object);
+            var response = _subject.GenerateAlias(new GenerateAliasRequest {Url = ValidUrl});
 
             var jsonResult = response as JsonResult;
             Assert.IsNotNull(jsonResult);
-            var urlGenerateResponse = jsonResult.Value as UrlGenerateResponse;
+            var urlGenerateResponse = jsonResult.Value as GenerateAliasResponse;
             Assert.IsNotNull(urlGenerateResponse);
             Assert.IsNotNull(urlGenerateResponse.Alias);
         }

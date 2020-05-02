@@ -3,7 +3,7 @@
 
     $.ajax({
         type: "POST",
-        url: "/api/url/generate",
+        url: "/api/generateAlias",
         data: JSON.stringify({ url: url }),
         dataType: "json",
         headers: {

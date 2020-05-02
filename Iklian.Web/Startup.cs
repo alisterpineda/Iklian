@@ -44,7 +44,7 @@ namespace Iklian.Web
 
             services.AddScoped<IUrlAliasData, UrlAliasData>();
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddControllersAsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
