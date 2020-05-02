@@ -1,8 +1,6 @@
 ﻿function submitShortenUrl() {
     const url = document.getElementById("url-text-input").value;
 
-
-
     $.ajax({
         type: "POST",
         url: "/api/url/generate",
