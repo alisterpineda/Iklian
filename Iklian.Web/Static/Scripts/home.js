@@ -1,10 +1,8 @@
 ﻿function submitShortenUrl() {
-    const success_message = $('#success-message');
-    success_message.hide();
-    const error_message = $('#error-message');
-    error_message.hide();
+    const url = document.getElementById("url-text-input").value;
 
-    const url = document.getElementById('url-text-input').value;
+
+
     $.ajax({
         type: "POST",
         url: "/api/url/generate",
@@ -12,18 +10,35 @@
         dataType: "json",
         headers: {
             "Content-Type": "application/json",
-            'Accept': 'application/json'
+            'Accept': "application/json"
         },
         success: function (response) {
-            var generated_link = window.location.origin + '/' + response.alias;
-            success_message.html(generated_link);
-            success_message.show();
+            const generatedLink = window.location.origin + "/" + response.alias;
+            displaySuccess(generatedLink);
 
         },
         error: function(error) {
-            console.log("Error: " + error); //just use the err here
-            error_message.html(error);
-            error_message.show();
+            console.log(`Error: ${error}`); //just use the err here
+            displayError("Error");
         }
     });
+}
+
+function displaySuccess(message) {
+    const successMessage = $("#success-message");
+    const errorMessage = $("#error-message");
+    errorMessage.hide();
+
+    successMessage.html(message);
+    successMessage.show();
+}
+
+
+function displayError(message) {
+    const errorMessage = $("#error-message");
+    const successMessage = $("#success-message");
+    successMessage.hide();
+
+    errorMessage.html(message);
+    errorMessage.show();
 }
