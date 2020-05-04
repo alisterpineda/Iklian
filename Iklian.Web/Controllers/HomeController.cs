@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Iklian.Data;
-using Iklian.Web.Areas.Api.Models;
 using Iklian.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -35,9 +34,14 @@ namespace Iklian.Web.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error([FromQuery] int code)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                StatusCode = code
+            });
         }
     }
 }
