@@ -1,7 +1,7 @@
 /// <binding BeforeBuild='clean' AfterBuild='copy, uglify, cssmin' />
 module.exports = function (grunt) {
     grunt.initConfig({
-        clean: ["wwwroot/css/*", "wwwroot/js/*", "temp/"],
+        clean: ["wwwroot/*", "temp/"],
         cssmin: {
             target: {
                 files: {
@@ -25,7 +25,13 @@ module.exports = function (grunt) {
                 expand: true,
                 flatten: true,
                 src: 'Static/Scripts/*.js',
-                dest: 'wwwroot/js'
+                dest: 'wwwroot/js/'
+            },
+            favicon: {
+                expand: true,
+                flatten: true,
+                src: 'Static/favicon.ico',
+                dest: 'wwwroot/'
             },
         },
     });
