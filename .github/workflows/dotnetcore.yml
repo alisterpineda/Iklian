@@ -3,8 +3,8 @@ name: .NET Core
 on: [push, pull_request]
 
 jobs:
-  test:
-    name: Unit Tests
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -13,12 +13,11 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal
   build:
-
+    needs: tests
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
     - name: Publish
-      run: dotnet publish ${env:GITHUB_WORKSPACE}/Iklian.Web/Iklian.Web.csproj -c Release
+      run: dotnet publish ${GITHUB_WORKSPACE}/Iklian.Web/Iklian.Web.csproj -c Release
