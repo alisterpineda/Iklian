@@ -38,7 +38,7 @@ jobs:
         grunt --gruntfile "Gruntfile.js" uglify --color
         grunt --gruntfile "Gruntfile.js" cssmin --color
     - name: dotnet publish
-      run: dotnet publish ${GITHUB_WORKSPACE}/Iklian.Web/Iklian.Web.csproj -c Release
+      run: dotnet publish Iklian.Web/Iklian.Web.csproj -c Release
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
