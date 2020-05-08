@@ -1,12 +1,6 @@
 name: .NET Core
 
-on:
-  push:
-    branches:
-      - master
-      - feature/*
-  pull_request:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -25,3 +19,5 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+    - name: Publish
+      run: dotnet publish -c Release -o 
