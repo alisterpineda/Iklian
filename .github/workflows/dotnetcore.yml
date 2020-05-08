@@ -23,9 +23,8 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - name: Install Node.js
-      run: |
-        npm install -g grunt-cli
+    - name: Install npm dependencies
+      run: npm install
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
