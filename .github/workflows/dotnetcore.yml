@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: '12'
     - name: Install npm dependencies
+      working-directory: Iklian.Web
       run: npm install
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
