@@ -24,10 +24,10 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: Publish
+    - name: dotnet publish
       run: dotnet publish ${GITHUB_WORKSPACE}/Iklian.Web/Iklian.Web.csproj -c Release
     - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
         name: Iklian.Web
-        path: Iklian.Web/bin/Release/netcoreapp3.1/linux-x64/publish
+        path: Iklian.Web/bin/Release/netcoreapp3.1/publish
