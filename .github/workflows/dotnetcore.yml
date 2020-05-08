@@ -26,6 +26,12 @@ jobs:
     - name: Install npm dependencies
       working-directory: Iklian.Web
       run: npm install
+    - name: Run Grunt.Js tasks
+      working-directory: Iklian.Web
+      run: |
+        grunt --gruntfile "Gruntfile.js" copy --color
+        grunt --gruntfile "Gruntfile.js" uglify --color
+        grunt --gruntfile "Gruntfile.js" cssmin --color
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
