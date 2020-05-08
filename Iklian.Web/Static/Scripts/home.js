@@ -16,8 +16,11 @@
 
         },
         error: function(error) {
-            console.log(`Error: ${error}`); //just use the err here
-            displayError("Error");
+            if (error.status === 400) {
+                displayError("Please enter a valid URL.");
+            } else {
+                displayError("An unknown error occured.");
+            }
         }
     });
 }
