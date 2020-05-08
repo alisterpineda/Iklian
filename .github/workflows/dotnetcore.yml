@@ -26,7 +26,7 @@ jobs:
         dotnet-version: 3.1.101
     - name: Publish
       run: dotnet publish ${GITHUB_WORKSPACE}/Iklian.Web/Iklian.Web.csproj -c Release
-     - name: Upload artifacts
+    - name: Upload artifacts
       uses: actions/upload-artifact@master
       with:
         name: Iklian.Web
