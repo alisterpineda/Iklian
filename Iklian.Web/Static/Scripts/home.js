@@ -1,4 +1,12 @@
-﻿function submitShortenUrl() {
+﻿$(document).ready(function () {
+    $("#url-text-input").keyup(function (event) {
+        if (event.keyCode === 13) {  // `enter` key
+            submitShortenUrl();
+        }
+    });
+});
+
+function submitShortenUrl() {
     const url = document.getElementById("url-text-input").value;
 
     $.ajax({
