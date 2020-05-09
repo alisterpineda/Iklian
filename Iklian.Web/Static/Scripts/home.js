@@ -1,4 +1,10 @@
-﻿$(document).ready(function () {
+﻿var urlInputElement = null;
+var successTextElement = null
+
+$(document).ready(function () {
+    urlInputElement = document.getElementById("url-text-input");
+    successTextElement = document.getElementById("success-message");
+
     $("#url-text-input").keyup(function (event) {
         if (event.keyCode === 13) {  // `enter` key
             submitShortenUrl();
@@ -33,21 +39,41 @@ function submitShortenUrl() {
     });
 }
 
-function displaySuccess(message) {
-    const successMessage = $("#success-message");
-    const errorMessage = $("#error-message");
-    errorMessage.hide();
+function copyShortenedUrlToClipboard() {
+    const copyButtonElement = $("#copy-button");
+    copyButtonElement.text("Copied!");
 
-    successMessage.html(message);
-    successMessage.show();
+    const tmpTextArea = document.createElement("textarea");
+    document.body.appendChild(tmpTextArea);
+    tmpTextArea.value = successTextElement.textContent;
+    tmpTextArea.select();
+    document.execCommand("copy");
+    tmpTextArea.remove();
 }
 
+function displaySuccess(message) {
+    const successAlert = $("#success-alert");
+    const successMessage = $("#success-message");
+    resetSuccessAlert();
+    resetErrorAlert();
+
+    successMessage.text(message);
+    successAlert.show();
+}
 
 function displayError(message) {
     const errorMessage = $("#error-message");
-    const successMessage = $("#success-message");
-    successMessage.hide();
+    resetSuccessAlert();
 
     errorMessage.html(message);
     errorMessage.show();
+}
+
+function resetSuccessAlert() {
+    $("#success-alert").hide();
+    $("#copy-button").text("Copy");
+}
+
+function resetErrorAlert() {
+    $("#error-message").hide();
 }

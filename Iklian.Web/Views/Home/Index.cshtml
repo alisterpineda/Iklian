@@ -4,7 +4,7 @@
 
 <script src="js/home.js" asp-append-version="true"></script>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <h1 class="display-4">Iklian</h1>
     </div>
@@ -23,7 +23,16 @@
         </div>
     </div>
     <div class="row">
-        <div class="alert alert-success" role="alert" style="display: none;" id="success-message"></div>
+        <div class="alert alert-success" role="alert" style="display: none;" id="success-alert">
+            <div class="row">
+                <div class="col-lg-auto">
+                    <span id="success-message"></span>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-success btn-sm" type="button" id="copy-button" onclick="copyShortenedUrlToClipboard();">Copy</button>
+                </div>
+            </div>
+        </div>
         <div class="alert alert-danger" role="alert" style="display: none;" id="error-message"></div>
     </div>
 </div>

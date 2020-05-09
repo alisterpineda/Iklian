@@ -15,7 +15,7 @@ module.exports = function (grunt) {
             target: {
                 files: {
                     'wwwroot/js/site.min.js':
-                        [ "node_modules/jquery/dist/jquery.js",
+                        ["node_modules/jquery/dist/jquery.js",
                             "node_modules/bootstrap/dist/js/bootstrap.js"]
                 }
             }
