@@ -3,17 +3,12 @@
     ViewData["Title"] = "Error";
 }
 
-@if (Model.StatusCode == 404)
-{
-    <h1>@Model.StatusCode - @Model.StatusCodeDefinition</h1>
-    <h2>@Model.Message</h2>
-}
-else
-{
-<h1>Unknown Error</h1>
-}
-
+<h1>@Model.StatusCode - @Model.StatusCodeDefinition</h1>
+<h2>@Model.Message</h2>
 
 <p>
     <strong>Request ID:</strong> <code>@Model.RequestId</code>
+</p>
+<p>
+    To go back to the home page, click <a asp-controller="Home" asp-action="Index">here</a>.
 </p>

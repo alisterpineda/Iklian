@@ -1,7 +1,11 @@
 ﻿using System.Diagnostics;
 using Iklian.Data;
+using Iklian.Web.Core.Exceptions;
 using Iklian.Web.Models;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
 namespace Iklian.Web.Controllers
@@ -28,19 +32,30 @@ namespace Iklian.Web.Controllers
             var urlAlias = _urlAliasData.GetUrlAliasFromAlias(alias);
             if (urlAlias == null)
             {
-                return NotFound();
+                throw new AliasNotFoundException();
             }
             return Redirect(urlAlias.Url);
         }
 
+        [Route("/Error")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error([FromQuery] int code)
+        public IActionResult Error()
         {
+            var exceptionHandlerPathFeature =
+                HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            var exception = exceptionHandlerPathFeature?.Error as BaseException;
+            var statusCode = StatusCodes.Status500InternalServerError;
+
+            if (exception != null)
+            {
+                statusCode = exception.StatusCode;
+            }
 
             return View(new ErrorViewModel
             {
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                StatusCode = code
+                StatusCode = statusCode,
+                StatusCodeDefinition = ReasonPhrases.GetReasonPhrase(statusCode)
             });
         }
     }
