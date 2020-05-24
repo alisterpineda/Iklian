@@ -3,8 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @if (this.ViewContext.RouteData.Values["controller"].ToString() == nameof(HomeController))
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    @if (this.ViewContext.RouteData.Values["controller"].ToString() == "Home")
     {
         <title>Iklian</title>
     }
@@ -16,19 +17,6 @@
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 </head>
 <body>
-<!--
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Iklian</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-</header>
--->
 <div class="container mb-5 mt-5">
     <main role="main" class="pb-3">
         @RenderBody()

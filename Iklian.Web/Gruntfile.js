@@ -26,6 +26,12 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: 'Static/Scripts/*.js',
                 dest: 'wwwroot/js/'
+            },
+            favicon: {
+                expand: true,
+                flatten: true,
+                src: 'Static/favicon-*.png',
+                dest: 'wwwroot/'
             }
         }
     });
