@@ -1,5 +1,5 @@
 ﻿var urlInputElement = null;
-var successTextElement = null
+var successTextElement = null;
 
 $(document).ready(function () {
     urlInputElement = document.getElementById("url-text-input");

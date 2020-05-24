@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: 'Static/favicon.ico',
                 dest: 'wwwroot/'
-            },
+            }
         },
     });
 

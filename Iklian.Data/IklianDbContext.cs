@@ -1,5 +1,4 @@
-﻿using System;
-using Iklian.Core;
+﻿using Iklian.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace Iklian.Data

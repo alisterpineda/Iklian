@@ -43,7 +43,7 @@ namespace Iklian.Web.Controllers
         {
             var exceptionHandlerPathFeature =
                 HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            var exception = exceptionHandlerPathFeature?.Error as BaseException;
+            var exception = exceptionHandlerPathFeature?.Error as IklianWebException;
             var statusCode = StatusCodes.Status500InternalServerError;
 
             if (exception != null)
