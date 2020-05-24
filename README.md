@@ -7,7 +7,7 @@ URL Shortener implemented in ASP.NET Core MVC
 
 URL shorteners, as the name implies, provide a service to convert long, encumbering links to short, easily shareable links. Additionally, they can also be used to measure and analyze internet traffic.
 
-Examples of such services include bit.ly, ow.ly and goo.gl (discontinued since March 20, 2019).
+Examples of such services include [bit.ly](https://bitly.com/), [ow.ly](https://hootsuite.com/pages/owly) and goo.gl (discontinued since March 20, 2019).
 
 This project started as a way to personally explore the world of ASP.NET and web development in general to complement my new software development role that started in December 16, 2019.
 
