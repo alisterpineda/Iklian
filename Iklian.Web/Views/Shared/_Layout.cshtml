@@ -1,0 +1,32 @@
+﻿@using Iklian.Web.Controllers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    @if (this.ViewContext.RouteData.Values["controller"].ToString() == "Home")
+    {
+        <title>Iklian</title>
+    }
+    else
+    {
+        <title>Iklian - @ViewData["Title"]</title>
+    }
+    <link rel="stylesheet" href="~/css/site.min.css" />
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</head>
+<body>
+<div class="container mb-5 mt-5">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2020 - Iklian - <a href="https://github.com/alisterpineda/Iklian">Source Code</a>
+    </div>
+</footer>
+</body>
+</html>

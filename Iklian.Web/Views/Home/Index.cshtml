@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="js/home.js" asp-append-version="true"></script>
+
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="display-4">Iklian</h1>
+    </div>
+    <div class="row">
+        <p class="text-muted">Tagalog Verb | to make short, shorten</p>
+    </div>
+    <div class="row">
+        <p>URL Shortener developed using ASP.NET Core.</p>
+    </div>
+    <div class="row">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Long URL" id="url-text-input">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="shorten-button" onclick="submitShortenUrl();">Shorten</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-success" role="alert" style="display: none;" id="success-alert">
+            <div class="row">
+                <div class="col-lg-auto">
+                    <span id="success-message"></span>
+                </div>
+                <div class="col">
+                    <button class="btn btn-outline-success btn-sm" type="button" id="copy-button" onclick="copyShortenedUrlToClipboard();">Copy</button>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" style="display: none;" id="error-message"></div>
+    </div>
+</div>

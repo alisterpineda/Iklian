@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iklian", "Iklian\Iklian.csproj", "{A3D628C8-5AB3-4A68-B082-2C050334735B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iklian.Web", "Iklian.Web\Iklian.Web.csproj", "{A3D628C8-5AB3-4A68-B082-2C050334735B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iklian.Core", "Iklian.Core\Iklian.Core.csproj", "{1382EBC2-017F-4F75-A72E-EDCA1145AF78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iklian.Data", "Iklian.Data\Iklian.Data.csproj", "{5492D880-1548-4D90-BF25-80995FAF6C02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Iklian.Web.Test", "Iklian.Web.Test\Iklian.Web.Test.csproj", "{591EC973-5B6D-47B4-8FE6-7D8BBB5BDD40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{A3D628C8-5AB3-4A68-B082-2C050334735B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3D628C8-5AB3-4A68-B082-2C050334735B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3D628C8-5AB3-4A68-B082-2C050334735B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1382EBC2-017F-4F75-A72E-EDCA1145AF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1382EBC2-017F-4F75-A72E-EDCA1145AF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1382EBC2-017F-4F75-A72E-EDCA1145AF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1382EBC2-017F-4F75-A72E-EDCA1145AF78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5492D880-1548-4D90-BF25-80995FAF6C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5492D880-1548-4D90-BF25-80995FAF6C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5492D880-1548-4D90-BF25-80995FAF6C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5492D880-1548-4D90-BF25-80995FAF6C02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{591EC973-5B6D-47B4-8FE6-7D8BBB5BDD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{591EC973-5B6D-47B4-8FE6-7D8BBB5BDD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{591EC973-5B6D-47B4-8FE6-7D8BBB5BDD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{591EC973-5B6D-47B4-8FE6-7D8BBB5BDD40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

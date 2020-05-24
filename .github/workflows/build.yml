@@ -1,0 +1,46 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+  build:
+    name: Build
+    needs: tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.Js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install npm dependencies
+      working-directory: Iklian.Web
+      run: npm install
+    - name: Run Grunt tasks
+      working-directory: Iklian.Web
+      run: |
+        grunt --gruntfile "Gruntfile.js" copy --color
+        grunt --gruntfile "Gruntfile.js" uglify --color
+        grunt --gruntfile "Gruntfile.js" cssmin --color
+    - name: dotnet publish
+      run: dotnet publish Iklian.Web/Iklian.Web.csproj -c Release
+    - name: Upload artifacts
+      uses: actions/upload-artifact@master
+      with:
+        name: Iklian.Web
+        path: Iklian.Web/bin/Release/netcoreapp3.1/publish
