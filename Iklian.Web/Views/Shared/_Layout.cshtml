@@ -1,9 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@using Iklian.Web.Controllers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iklian - @ViewData["Title"]</title>
+    @if (this.ViewContext.RouteData.Values["controller"].ToString() == nameof(HomeController))
+    {
+        <title>Iklian</title>
+    }
+    else
+    {
+        <title>Iklian - @ViewData["Title"]</title>
+    }
     <link rel="stylesheet" href="~/css/site.min.css" />
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 </head>
