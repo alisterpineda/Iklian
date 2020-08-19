@@ -19,6 +19,9 @@ jobs:
     needs: tests
     runs-on: ubuntu-latest
     steps:
+    - name: Get timestamp
+      id: timestamp
+      run: echo "::set-output name=timestamp::$(date +'%Y%m%d%H%M%S')"
     - uses: actions/checkout@v2
     - name: Setup Node.Js
       uses: actions/setup-node@v1
@@ -40,7 +43,7 @@ jobs:
     - name: dotnet publish
       run: dotnet publish Iklian.Web/Iklian.Web.csproj -c Release
     - name: Upload artifacts
-      uses: actions/upload-artifact@master
+      uses: actions/upload-artifact@main
       with:
-        name: Iklian.Web
+        name: Iklian.${{ steps.timestamp.outputs.timestamp }}
         path: Iklian.Web/bin/Release/netcoreapp3.1/publish
