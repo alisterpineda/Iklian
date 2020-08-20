@@ -45,5 +45,5 @@ jobs:
     - name: Upload artifacts
       uses: actions/upload-artifact@main
       with:
-        name: Iklian.${{ steps.timestamp.outputs.timestamp }}
+        name: Iklian_${{ steps.timestamp.outputs.timestamp }}
         path: Iklian.Web/bin/Release/netcoreapp3.1/publish
